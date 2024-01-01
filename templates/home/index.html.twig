@@ -1,0 +1,344 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+        <div class="hero-wrap js-fullheight">
+	    <div class="home-slider owl-carousel js-fullheight">
+	      <div class="slider-item js-fullheight" style="background-image:url(/images/bg_1.jpg);">
+	      	<div class="overlay"></div>
+	        <div class="container">
+	          <div class="row no-gutters slider-text align-items-center">
+		          <div class="col-md-7 ftco-animate">
+		          	<div class="text w-100">
+		          		<h2>Welcome to Health Coach</h2>
+			            <h1 class="mb-4">Get in shape faster, live your happy life</h1>
+			            <p><a href="#" class="btn btn-primary">Learn more</a> <a href="#" class="btn btn-white">Contact us</a></p>
+		            </div>
+		          </div>
+		        </div>
+	        </div>
+	      </div>
+
+	      <div class="slider-item js-fullheight" style="background-image:url(/images/bg_2.jpg);">
+	      	<div class="overlay"></div>
+	        <div class="container">
+	          <div class="row no-gutters slider-text align-items-center">
+		          <div class="col-md-7 ftco-animate">
+		          	<div class="text w-100">
+		          		<h2>A Fresh approach to healthy life</h2>
+			            <h1 class="mb-4 color-white">Unlock your potential with good nutrition</h1>
+			            <p><a href="#" class="btn btn-primary">Learn more</a> <a href="#" class="btn btn-white">Contact us</a></p>
+		            </div>
+		          </div>
+		        </div>
+	        </div>
+	      </div>
+
+	      <div class="slider-item js-fullheight" style="background-image:url(/images/bg_3.jpg);">
+	      	<div class="overlay"></div>
+	        <div class="container">
+	          <div class="row no-gutters slider-text align-items-center justify-content-end">
+		          <div class="col-md-6 ftco-animate">
+		          	<div class="text w-100">
+		          		<h2>Welcome Health Coach</h2>
+			            <h1 class="mb-4">You can transform health through habit change</h1>
+			            <p><a href="#" class="btn btn-primary">Learn more</a> <a href="#" class="btn btn-white">Contact us</a></p>
+		            </div>
+		          </div>
+		        </div>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+
+
+    <section class="ftco-section ftco-services">
+    	<div class="container">
+    		<div class="row">
+          <div class="col-md-4 d-flex services align-self-stretch px-4 ftco-animate">
+            <div class="d-block services-wrap text-center">
+              <div class="img" style="background-image: url(images/services-1.jpg);"></div>
+              <div class="media-body p-2 mt-3">
+                <h3 class="heading">Exercise Program</h3>
+                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+                <p><a href="#" class="btn btn-primary btn-outline-primary">Read more</a></p>
+              </div>
+            </div>      
+          </div>
+          <div class="col-md-4 d-flex services align-self-stretch px-4 ftco-animate">
+            <div class="d-block services-wrap text-center">
+              <div class="img" style="background-image: url(images/services-2.jpg);"></div>
+              <div class="media-body p-2 mt-3">
+                <h3 class="heading">Nutrition Plans</h3>
+                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+                <p><a href="{{ path('menu_index') }}" class="btn btn-primary btn-outline-primary">Read more</a></p>
+              </div>
+            </div>    
+          </div>
+          <div class="col-md-4 d-flex services align-self-stretch px-4 ftco-animate">
+            <div class="d-block services-wrap text-center">
+              <div class="img" style="background-image: url(images/services-3.jpg);"></div>
+              <div class="media-body p-2 mt-3">
+                <h3 class="heading">Diet Program</h3>
+                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+                <p><a href="{{ path('regime_index') }}" class="btn btn-primary btn-outline-primary">Read more</a></p>
+              </div>
+            </div>      
+          </div>
+        </div>
+    	</div>
+    </section>
+
+    <section class="ftco-section ftco-no-pt ftco-no-pb bg-light">
+			<div class="container">
+				<div class="row no-gutters">
+					<div class="col-md-5 p-md-5 img img-2 mt-5 mt-md-0" style="background-image: url(images/coach-1.jpg);">
+					</div>
+					<div class="col-md-7 wrap-about py-4 py-md-5 ftco-animate">
+	          <div class="heading-section mb-5">
+	          	<div class="pl-md-5">
+		          	<span class="subheading mb-2">Welcome to Healthcare</span>
+		            <h2 class="mb-2">Hello! Health Care is a natural way of improving your health</h2>
+	            </div>
+	          </div>
+	          <div class="pl-md-5">
+							<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+							<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+							<div class="founder d-flex align-items-center mt-5">
+								<div class="img" style="background-image: url(images/coach-1.jpg);"></div>
+								<div class="text pl-3">
+									<h3 class="mb-0">Cythia Hunter</h3>
+									<span class="position">Personal Dietitian</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="ftco-section ftco-no-pt ftco-no-pb">
+			<div class="container-fluid px-md-0">
+				<div class="row no-gutters">
+					<div class="col-md-3 d-flex align-items-stretch">
+						<div class="consultation w-100 text-center px-4 px-md-5">
+							<h3 class="mb-4">Healthcare Services</h3>
+							<p>A small river named Duden flows by their place and supplies</p>
+							<a href="#" class="btn-custom">See Services</a>
+						</div>
+					</div>
+					<div class="col-md-6 d-flex align-items-stretch">
+						<div class="consultation consul w-100 px-4 px-md-5">
+							<div class="text-center">
+								<h3 class="mb-4">Free Consultation</h3>
+							</div>
+							<form action="#" class="appointment-form">
+								<div class="row">
+									<div class="col-md-12 col-lg-6 col-xl-4">
+										<div class="form-group">
+				    					<input type="text" class="form-control" placeholder="First Name">
+				    				</div>
+									</div>
+									<div class="col-md-12 col-lg-6 col-xl-4">
+										<div class="form-group">
+				    					<input type="text" class="form-control" placeholder="Last Name">
+				    				</div>
+									</div>
+									<div class="col-md-12 col-lg-6 col-xl-4">
+										<div class="form-group">
+				    					<div class="form-field">
+		          					<div class="select-wrap">
+		                      {# <div class="icon"><span class="fa fa-chevron-down"></span></div>
+		                      <select name="" id="" class="form-control">
+		                      	<option value="">Services</option>
+		                        <option value="">Services 1</option>
+		                        <option value="">Services 2</option>
+		                      </select> #}
+		                    </div>
+				              </div>
+				    				</div>
+									</div>
+									{# <div class="col-md-12 col-lg-6 col-xl-4">
+										<div class="form-group">
+				    					<div class="input-wrap">
+				            		<div class="icon"><span class="ion-md-calendar"></span></div>
+				            		<input type="text" class="form-control appointment_date" placeholder="Date">
+			            		</div>
+				    				</div>
+									</div> #}
+									<div class="col-md-12 col-lg-6 col-xl-4">
+										<div class="form-group">
+				    					<div class="input-wrap">
+				            		<div class="icon"><span class="ion-ios-clock"></span></div>
+				            		<input type="text" class="form-control appointment_time" placeholder="Time">
+			            		</div>
+				    				</div>
+									</div>
+									<div class="col-md-12 col-lg-6 col-xl-4">
+										<div class="form-group">
+				              <input type="submit" value="Appointment" class="btn btn-white py-2 px-4">
+				            </div>
+									</div>
+								</div>
+		    			</form>
+		    	  </div>
+					</div>
+					<div class="col-md-3 d-flex align-items-stretch">
+						<div class="consultation w-100 text-center px-4 px-md-5">
+							<h3 class="mb-4">Find A Health Expert</h3>
+							<p>A small river named Duden flows by their place and supplies</p>
+							<a href="#" class="btn-custom">Meet our health coach</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+    <section class="ftco-section testimony-section bg-light">
+      <div class="container">
+        <div class="row justify-content-center pb-5 mb-3">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+          	<span class="subheading mb-3">Testimonies</span>
+            <h2>Happy Clients &amp; Feedbacks</h2>
+          </div>
+        </div>
+        <div class="row ftco-animate">
+          <div class="col-md-12">
+            <div class="carousel-testimony owl-carousel">
+				{% for comment in comments %}
+				<div class="item">
+                <div class="testimony-wrap d-flex">
+				{# <p class="mb-4">{{ comment.content }}</p> #}
+                	<div class="user-img" style="background-image: url(images/person_1.jpg)">
+                  	</div>
+                  	<div class="text pl-4">
+                  	<span class="quote d-flex align-items-center justify-content-center">
+                    <i class="fa fa-quote-left"></i>
+                    </span>
+				<p class="mb-4">{{ comment.content }}</p>
+					<p class="name">{{ comment.user }}</p>
+                    <span class="position">Customer</span>
+                  </div>
+                </div>
+			{% endfor %}
+              </div>
+
+			</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+	{# <section class="ftco-section testimony-section" style="background-image: url(image/bg_5.jpg);">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row justify-content-center mb-3 pb-2">
+				<div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
+					<span class="subheading" style="padding-bottom:20px;color:#fff;">Testimony</span>
+					<h2 class="mb-4 " style="color:#fff">Happy Customer</h2>
+				</div>
+			</div>
+			<div class="row ftco-animate justify-content-center">
+				<div class="col-md-7">
+					<div class="carousel-testimony owl-carousel ftco-owl">
+						{% for comment in comments %}
+						<div class="item">
+							<div class="testimony-wrap text-center">
+								<div class="text p-3">
+									<p class="mb-4">{{ comment.content }}</p>
+									<div class="user-img mb-4" style="background-image: url(image/person_1.jpg)">
+										<span class="quote d-flex align-items-center justify-content-center">
+											<i class="fa fa-quote-left"></i>
+										</span>
+									</div>
+									<p class="name">{{ comment.user }}</p>
+									<span class="position">Customer</span>
+								</div>
+							</div>
+						</div>
+							{% endfor %}
+					</div>
+				</div>
+				<div style="text-align:center; margin-top:20px">
+					<button class="btn btn-white btn-outline-white" onclick="showForm()">laissez un commentaire</button>
+					<div id="commentForm" style="display: none;"> 
+					{% if app.user %}
+						{{ form_start(form, {'attr': {'class': 'comment-form'}}) }}
+						<div class="form-group">
+							{{ form_label(form.content) }}
+							{{ form_widget(form.content, {'attr': {'class': 'form-control'}}) }}
+						</div>
+						<button type="submit" class="btn btn-primary">Envoyer</button>
+						{{ form_end(form) }}
+						<div class="comment-success-message mt-4" style="display: none; color:#fff">Le commentaire a été envoyé avec succès.</div>
+					{% else %}
+						<div class="alert alert-warning mt-5" role="alert">
+							Vous devez vous connecter pour laisser un commentaire. <a href="{{ path('app_login') }}">connexion</a>
+						</div>
+					{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>  #}
+
+    <section class="ftco-section">
+    	<div class="container">
+    		<div class="row justify-content-center pb-5 mb-3">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+          	<span class="subheading mb-3">Other Services</span>
+            <h2>How it works?</h2>
+          </div>
+        </div>
+    		<div class="row">
+          <div class="col-md-3 d-flex services align-self-stretch px-4 ftco-animate">
+            <div class="d-block text-center">
+              <div class="icon d-flex justify-content-center align-items-center">
+            		<span class="flaticon-diet"></span>
+              </div>
+              <div class="media-body p-2 mt-3">
+                <h3 class="heading">Follow the program</h3>
+                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+              </div>
+            </div>      
+          </div>
+          <div class="col-md-3 d-flex services align-self-stretch px-4 ftco-animate">
+            <div class="d-block text-center">
+              <div class="icon d-flex justify-content-center align-items-center">
+            		<span class="flaticon-workout"></span>
+              </div>
+              <div class="media-body p-2 mt-3">
+                <h3 class="heading">Work for result</h3>
+                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+              </div>
+            </div>    
+          </div>
+          <div class="col-md-3 d-flex services align-self-stretch px-4 ftco-animate">
+            <div class="d-block text-center">
+              <div class="icon d-flex justify-content-center align-items-center">
+            		<span class="flaticon-diet-1"></span>
+              </div>
+              <div class="media-body p-2 mt-3">
+                <h3 class="heading">Eat healthy food</h3>
+                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+              </div>
+            </div>      
+          </div>
+          <div class="col-md-3 d-flex services align-self-stretch px-4 ftco-animate">
+            <div class="d-block text-center">
+              <div class="icon d-flex justify-content-center align-items-center">
+            		<span class="flaticon-first"></span>
+              </div>
+              <div class="media-body p-2 mt-3">
+                <h3 class="heading">Enjoy your life</h3>
+                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+              </div>
+            </div>      
+          </div>
+        </div>
+    	</div>
+    </section>
+
+
+
+{% endblock %}

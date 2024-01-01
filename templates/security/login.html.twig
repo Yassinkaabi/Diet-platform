@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-6">
+            <form method="post" class="form-signin" style="border: 2px solid #222; padding: 40px; margin-top: 10%;">
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+
+                {% if app.request.query.get('message') == 'login_first' %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ app.flashes('error')|first }}
+                    </div>
+                {% endif %}
+
+                <h1 class="h3 mb-3 font-weight-normal" style="margin-bottom: 15px;">Please sign in</h1>
+                {# <label for="inputEmail" class="sr-only">email</label> #}
+                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Email" autocomplete="email" required autofocus>
+                <br>
+                {# <label for="inputPassword" class="sr-only">Password</label> #}
+                <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" autocomplete="current-password" required>
+
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                <button class="btn btn-primary btn-block" type="submit" style="margin-top: 15px;">
+                    Sign in
+                </button>
+                
+                <p style="margin-top: 10px;">Don't have an account? <a href="{{ path('app_register') }}" >Sign up</a></p>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

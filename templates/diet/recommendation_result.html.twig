@@ -1,0 +1,43 @@
+{# templates/diet/recommendation_result.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Diet Recommendation Result{% endblock %}
+
+{% block body %}
+<div class="container mt-5 mb-5">
+    <h1>Diet Recommendation Result</h1>
+
+    <form id="activityForm">
+        <p>Original Calories Needed: <span id="originalCalories">{{ caloriesNeeded }}</span></p>
+
+        <label for="activityLevel">Select Activity Level:</label>
+        <select name="activityLevel" id="activityLevel" class="form-control">
+            <option value="1.0">None</option>
+            <option value="1.2">Sedentary</option>
+            <option value="1.375">Lightly Active</option>
+            <option value="1.55">Moderately Active</option>
+            <option value="1.725">Very Active</option>
+            <option value="1.9">Extremely Active</option>
+        </select>
+
+        <p>Calories Needed: <span id="caloriesNeeded">{{ caloriesNeeded }}</span></p>
+    </form>
+</div>
+    <script>
+        let originalCalories = parseFloat(document.getElementById('originalCalories').innerText);
+
+        document.getElementById('activityLevel').addEventListener('change', function() {
+            updateCalories();
+        });
+
+        function updateCalories() {
+            // Get the selected multiplier from the dropdown
+            let multiplier = parseFloat(document.getElementById('activityLevel').value);
+
+            // Update displayed calories
+            let newCalories = (originalCalories * multiplier).toFixed(2);
+            document.getElementById('caloriesNeeded').innerText = newCalories;
+        }
+    </script>
+{% endblock %}
