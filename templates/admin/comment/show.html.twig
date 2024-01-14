@@ -1,0 +1,29 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block title %}Comment{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Détails de commentaire  </h2>
+
+    <dl class="row">
+        <dt class="col-sm-2">ID</dt>
+        <dd class="col-sm-10">{{ comment.id }}</dd>
+
+        <dt class="col-sm-2">Content</dt>
+        <dd class="col-sm-10">{{ comment.content }}</dd>
+
+        <dt class="col-sm-2">Utilisateur</dt>
+        <dd class="col-sm-10">{{ comment.user }}</dd>
+        
+        <dt class="col-sm-2">Email</dt>
+        <dd class="col-sm-10">{{ comment.user.email }}</dd>
+    </dl>
+
+    {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path('comment_delete', {'id': comment.id}) }}" class="btn btn-danger">Supprimer</a>
+    {% endif %}
+    <a href="{{ path('app_comment_admin') }}" class="btn btn-secondary">Retour à la liste</a>
+</div>
+
+{% endblock %}

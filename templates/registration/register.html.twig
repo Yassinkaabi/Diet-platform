@@ -37,12 +37,17 @@
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 <div class="">
-                    {# <h1>Register</h1> #}
+                    <h1>Register</h1>
                     <div class="registerForm">
                         <form method="post" style="border: 2px solid #222; padding: 40px; margin-top: 10%;">
                             {{ form_errors(registrationForm) }}
                             {{ form_start(registrationForm) }}
-
+{# 
+                            <div class="form-group">
+                                <label for="{{ registrationForm.imageFile.vars.id }}">Profile image:</label>
+                                {{ form_widget(registrationForm.imageFile, {'attr': {'class': 'form-control'}}) }}
+                            </div> #}
+                            
                             <div class="form-group">
                                 <label for="{{ registrationForm.username.vars.id }}">Username:</label>
                                 {{ form_widget(registrationForm.username, {'attr': {'class': 'form-control'}}) }}
@@ -73,11 +78,11 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="{{ registrationForm.plainPassword.vars.id }}">Password:</label>
-                                {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control'}}) }}
+                                {# <label for="{{ registrationForm.plainPassword.vars.id }}">Password:</label> #}
+                                {{ form_widget(registrationForm.plainPassword) }}
                             </div>
 
-                            <div class="form-group form-check">
+                            <div class="form-group">
                                 {{ form_row(registrationForm.agreeTerms, {'attr': {'class': 'form-check-input'}}) }}
                                 <label class="form-check-label" style="margin-left:40px" for="{{ registrationForm.agreeTerms.vars.id }}"></label>
                             </div>

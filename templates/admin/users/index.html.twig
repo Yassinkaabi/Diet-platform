@@ -1,0 +1,56 @@
+{% extends "dashboard.html.twig" %}
+
+{% block content %}
+
+    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Genre</th>
+                                            <th>Age</th>
+                                            <th>Weight</th>
+                                            <th>Height</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Genre</th>
+                                            <th>Age</th>
+                                            <th>Weight</th>
+                                            <th>Height</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                    {% for user in users %}
+                                        <tr>
+                                            <td>{{ user.id }}</td>
+                                            <td>{{ user.username }}</td>
+                                            <td>{{ user.email }}</td>
+                                            <td>{{ user.genre }}</td>
+                                            <td>{{ user.age }}</td>
+                                            <td>{{ user.weight }}</td>
+                                            <td>{{ user.height }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+<script src="{{ asset('js/datatables-demo.js') }}"></script>    
+<script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
+
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "dashboard.html.twig" %}
+
+{% block title %}Liste de regime!
+{% endblock %}
+
+{% block content %}
+
+	<div class="container mt-5 " style="min-height:1000px">
+		<div class="d-flex justify-content-between mb-4">
+			<h2>
+				Menu list
+			</h2>
+			<div>
+				{% if is_granted('ROLE_ADMIN') %}
+					<a href="{{ path('regime_add') }}" class="btn btn-primary mb-2">Ajouter un régime</a>
+				{% endif %}
+			</div>
+		</div>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Nom</th>
+					<th>Durée</th>
+					<th>Type</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for regim in regimes %}
+					<tr>
+						<td>{{ regim.id }}</td>
+						<td>{{ regim.nomRegime }}</td>
+						<td>{{ regim.duree }}
+							mois</td>
+						<td>{{ regim.type }}</td>
+						<td style="display:flex;gap:5px">
+							<a href="{{ path('regime_show_admin', {'id': regim.id}) }}" class="btn btn-info">Show</a>
+							{% if is_granted('ROLE_ADMIN') %}
+								<a href="{{ path('regime_edit', {'id': regim.id}) }}" class="btn btn-warning">Modify</a>
+								<a href="{{ path('regime_delete', {'id': regim.id}) }}" class="btn btn-danger">Delete</a>
+							{% endif %}
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		{{ knp_pagination_render(regimes) }}
+	</div>
+
+{% endblock %}

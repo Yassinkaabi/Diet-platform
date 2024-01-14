@@ -2,11 +2,11 @@
 
 {% extends 'base.html.twig' %}
 
-{% block title %}Diet Recommendation Result{% endblock %}
+{% block title %}Calculation Result{% endblock %}
 
 {% block body %}
 <div class="container mt-5 mb-5">
-    <h1>Diet Recommendation Result</h1>
+    <h1>Calculation Result</h1>
 
     <form id="activityForm">
         <p>Original Calories Needed: <span id="originalCalories">{{ caloriesNeeded }}</span></p>
@@ -23,6 +23,20 @@
 
         <p>Calories Needed: <span id="caloriesNeeded">{{ caloriesNeeded }}</span></p>
     </form>
+    <div>
+        <p> if you want to be earn weight juste plus 300 calories </p>
+        <p> if you want to lost weight juste submission 500 calories </p>
+        <p> Choose your adapted diet </p>
+        <p> Choose your plat food healthy for diet </p>
+    </div>
+
+
+    <div class="container">
+    <div class="row">    
+        <p>Exercice for bigger</p>
+        <p> Exercice for condition </p>
+    </div>
+    </div>
 </div>
     <script>
         let originalCalories = parseFloat(document.getElementById('originalCalories').innerText);

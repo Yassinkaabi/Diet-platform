@@ -23,7 +23,7 @@
                 <td>
                 {% if is_granted('ROLE_ADMIN') %}
                     <a class="btn btn-info" href="{{ path('app_comment_show', {'id': comment.id}) }}">show</a>
-                    {{ include('comment/_delete_form.html.twig') }}
+                    {# {{ include('comment/_delete_form.html.twig') }} #}
                 {% endif %}
                 </td>
             </tr>

@@ -1,0 +1,86 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block title %}Liste des plats!
+{% endblock %}
+
+{% block content %}
+
+	<div
+		id="wrapper">
+		<!-- Content Wrapper -->
+		<div
+			id="content-wrapper" class="d-flex flex-column">
+
+			<!-- Main Content -->
+			<div
+				id="content">
+
+				<!-- Begin Page Content -->
+				<div
+					class="container-fluid">
+
+					<!-- Page Heading -->
+					<div class="d-sm-flex align-items-center justify-content-between mb-4">
+						<h1 class="h3 mb-0 text-gray-800">Menu list</h1>
+						{% if is_granted('ROLE_ADMIN') %}
+							<a href="{{ path('menu_add') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Ajouter menu</a>
+						{% endif %}
+					</div>
+
+				</div>
+				<!-- /.container-fluid -->
+
+				<div class="container mt-5">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Menu</th>
+								<th>Cout</th>
+								<th>Calories</th>
+								<th>Ingredient</th>
+								<th>Régime</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for menu in menus %}
+								<tr>
+									<td>{{ menu.id }}</td>
+									<td>{{ menu.nomPlat }}</td>
+									<td>{{ menu.cout }}
+										dinars</td>
+									<td>{{ menu.nbrCalories }}
+										calories</td>
+									<td>{{ menu.ingredients }}</td>
+									<td>{{ menu.regime }}</td>
+									<td style="display:flex;gap:5px">
+										<a href="{{ path('menu_edit', {'id': menu.id}) }}" class="btn btn-warning">Modify</a>
+										<a href="{{ path('menu_show_admin', {'id': menu.id}) }}" class="btn btn-info">Show</a>
+										{% if is_granted('ROLE_ADMIN') %}
+											<a href="{{ path('menu_delete', {'id': menu.id}) }}" class="btn btn-danger">Delete</a>
+										{% endif %}
+									</td>
+								</tr>
+							{% else %}
+								<tr>
+									<td colspan="5">
+										<p>
+											aucun menu trouvée
+										</p>
+									</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+					{# {% if is_granted('ROLE_ADMIN') %}
+											<a href="{{ path('menu_add') }}" class="btn btn-primary mb-2">Ajouter menu</a>
+										{% endif %} #}
+				</div>
+
+			</div>
+			<!-- End of Main Content -->
+
+		</div>
+	</div>
+{% endblock %}

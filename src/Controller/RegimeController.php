@@ -34,6 +34,22 @@ class RegimeController extends AbstractController
         }
     }
 
+    #[Route('/list', name: 'list')]
+    public function displayRegim(RegimeRepository $regimeRepository, Request $request, PaginatorInterface $paginator): Response
+    {
+        {
+            $query = $regimeRepository->findAll();
+            $regimes = $paginator->paginate(
+                $query,
+                $request->query->getInt('page', 1),
+                5
+            );
+            return $this->render('admin/regime/index.html.twig', [
+                'regimes' => $regimes,
+            ]);
+        }
+    }
+
     #[Route('/add', name: 'add')]
     public function new(Request $request ,EntityManagerInterface $manager): Response
     {
@@ -57,7 +73,7 @@ class RegimeController extends AbstractController
                 return $this->redirectToRoute('regime_index');
             }
     
-            return $this->render('regime/new.html.twig', [
+            return $this->render('admin/regime/new.html.twig', [
                 'regime' => $regime,
                 'form' => $form,
             ]);
@@ -86,21 +102,38 @@ class RegimeController extends AbstractController
                 return $this->redirectToRoute('regime_index');
             }
     
-            return $this->render('regime/edit.html.twig', [
+            return $this->render('admin/regime/edit.html.twig', [
                 'regime' => $regime,
                 'form' => $form,
             ]);
     
     }
 
-    #[Route('/{id}', name: 'show')]
-    public function show(Regime $regime): Response
+    #[Route('/admin/{id}', name: 'show_admin')]
+    public function showAdmin(Regime $regime): Response
     {
-        return $this->render('regime/show.html.twig', [
+        $user = $this->getUser();
+        if (!$user) {
+            return $this->redirectToRoute('app_login');
+        }
+        
+        return $this->render('admin/regime/show.html.twig', [
             'regime' => $regime,
         ]);
     }
 
+    #[Route('/{id}', name: 'show_user')]
+    public function show(Regime $regime): Response
+    {
+        $user = $this->getUser();
+        if (!$user) {
+            return $this->redirectToRoute('app_login');
+        }
+        
+        return $this->render('regime/show.html.twig', [
+            'regime' => $regime,
+        ]);
+    }
 
     #[Route('/{id}/delete', name: 'delete')]
     public function delete(RegimeRepository $regimeRepository, Regime $regime, EntityManagerInterface $manager): Response

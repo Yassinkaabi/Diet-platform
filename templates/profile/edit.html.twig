@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profile
+{% endblock %}
+
+{% block body %}
+	{% for flash_error in app.flashes('verify_email_error') %}
+		<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+	{% endfor %}
+
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<form class="file-upload" method="post">
+					{{ form_errors(profileEditForm) }}
+					{{ form_start(profileEditForm) }}
+					<div class="row mb-5 gx-5">
+
+						<div class="col-xxl-8 mb-5 mb-xxl-0">
+							<div class="bg-secondary-soft px-4 py-5 rounded">
+								<div class="row g-3">
+									<h4 class="mb-4 mt-0">Contact detail</h4>
+
+									<div class="col-md-6">
+										{{ form_row(profileEditForm.username, {'attr': {'class': 'form-control', 'placeholder': 'Username'}}) }}
+									</div>
+
+									<div class="col-md-6">
+										{{ form_row(profileEditForm.email, {'attr': {'class': 'form-control', 'placeholder': 'Email'}}) }}
+									</div>
+
+									<div class="col-md-6">
+										{{ form_row(profileEditForm.age, {'attr': {'class': 'form-control', 'placeholder': 'Age'}}) }}
+									</div>
+
+									<div class="col-md-6">
+										{{ form_row(profileEditForm.height, {'attr': {'class': 'form-control', 'placeholder': 'Height'}}) }}
+									</div>
+
+									<div class="col-md-6">
+										{{ form_row(profileEditForm.weight, {'attr': {'class': 'form-control', 'placeholder': 'weight'}}) }}
+									</div>
+
+									<div class="col-md-6">
+										{{ form_row(profileEditForm.genre) }}
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+					<button type="submit" class="btn btn-primary">Modifer</button>
+					{{ form_widget(profileEditForm._token) }}
+					{{ form_end(profileEditForm) }}
+				</form>
+			</div>
+		</div>
+	</div>
+{% endblock %}

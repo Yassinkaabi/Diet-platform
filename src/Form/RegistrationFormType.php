@@ -7,11 +7,13 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class RegistrationFormType extends AbstractType
 {
@@ -20,6 +22,13 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('username')
             ->add('email')
+            // ->add('imageFile', VichImageType::class, [
+            //     'label' => 'photo de profile',
+            //     'label_attr' => [
+            //         'class' => 'form-label mt-4'
+            //     ],
+            //     'required' => false
+            // ])
             ->add('genre', ChoiceType::class, [
                 'choices' => [
                     'Homme' => 'homme',
@@ -41,22 +50,12 @@ class RegistrationFormType extends AbstractType
                 ],
                 // 'label_attr' => ['style' => 'margin-bottom: 20px;'], 
             ])
-            ->add('plainPassword', PasswordType::class, [
-                // instead of being set onto the object directly,
-                // this is read and encoded in the controller
-                'mapped' => false,
-                'attr' => ['autocomplete' => 'new-password'],
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Please enter a password',
-                    ]),
-                    new Length([
-                        'min' => 6,
-                        'minMessage' => 'Your password should be at least {{ limit }} characters',
-                        // max length allowed by Symfony for security reasons
-                        'max' => 4096,
-                    ]),
-                ],
+            ->add('plainPassword', RepeatedType::class, [
+                'type' => PasswordType::class,
+                'first_options' => ['label' => 'New password'],
+                'second_options' => ['label' => 'Repeat new password'],
+                'mapped' => false, // Not mapped to the entity
+                'required' => false, // It's not required for all form submissions
             ])
         ;
     }

@@ -1,0 +1,39 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block title %}Comment index{% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h1>Comment</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Content</th>
+                    <th>user</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for comment in comments %}
+                <tr>
+                    <td>{{ comment.id }}</td>
+                    <td>{{ comment.content }}</td>
+                    <td>{{ comment.user }}</td>
+                    <td>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a class="btn btn-info" href="{{ path('app_comment_show', {'id': comment.id}) }}">show</a>
+                        
+                    {% endif %}
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

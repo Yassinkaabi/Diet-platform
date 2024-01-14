@@ -1,0 +1,36 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block content %}
+	<div class="container mt-4">
+		<h1>Liste des contacts</h1>
+
+		<div class="table-responsive">
+			<table class="table table-bordered table-hover">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Nom Complet</th>
+						<th>Email</th>
+						<th>Sujet</th>
+						<th>Message</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for contact in contact %}
+						<tr>
+							<td>{{ contact.id }}</td>
+							<td>{{ contact.username }}</td>
+							<td>{{ contact.email }}</td>
+							<td>{{ contact.subject }}</td>
+							<td>{{ contact.message }}</td>
+							<td>
+                                <a href="{{ path('delete_contact', {'id': contact.id}) }}" class="btn btn-info">Delete</a>
+                            </td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+{% endblock %}

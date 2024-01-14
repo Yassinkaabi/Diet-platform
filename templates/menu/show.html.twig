@@ -1,0 +1,105 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ menu.nomPlat }}{% endblock %}
+
+{% block body %}  
+
+<div class="container mt-5">
+    <h2>Détails du plat</h2>
+
+    <a href="{{ path('menu_index') }}" class="btn btn-secondary">Retour à la liste</a>
+
+        <!-- Product section-->
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="row gx-4 gx-lg-5 align-items-center">
+                    <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{ vich_uploader_asset(menu, 'imageFile') }}" alt="..." /></div>
+                    <div class="col-md-6">
+                        <h1 class="display-5 fw-bolder">Plat name : {{ menu.nomPlat }}</h1>
+                        <a href="{{ path('regime_show_user', {id: menu.regime.id}) }}">
+                        <h6 style="color:#222">Diet name : {{ menu.regime }}</h6></a>
+                        <div class="fs-5 mt-5 mb-5">
+                            <h4><strong> Price : </strong><span style="color:red">{{ menu.cout }}</span> dinars</h4>
+                            <h4><strong> Calories : </strong><span style="color:red">{{ menu.nbrCalories }}</span> calories</h4>
+                        </div>
+						<h4 class=" fw-bolder">ingredients :<h6>
+                        <p class="lead">{{ menu.ingredients }}</p>
+						<div id="addToFavoritesContainer">
+							<button class="btn btn-outline-dark flex-shrink-0" type="button" id="addToFavoritesBtn">
+								<i class="bi-cart-fill me-1"></i>
+								Add to favoris
+							</button>
+							<div id="addedToFavoritesMessage" style="display: none; color: green;font-weight: bold; margin-top: 10px;">
+								Plat ajouté aux favoris !
+							</div>
+							<div id="goLogin" class="alert alert-warning mt-5" role="alert" style="display:none;">
+								Vous devez vous connecter pour ajouter un repas.
+								<a href="{{ path('app_login') }}">connexion</a>
+							</div>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Related items section-->
+			<div class="tab-content">
+				<div id="tab-1" class="tab-pane fade show p-0 active">
+					<div class="row g-4">
+						{# {% for menu in latestMenus %} #}
+						{% for menu in menu.regime.menus %}
+							<div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+								<div class="product-item">
+									<div class=" bg-light overflow-hidden" style="text-align:center">
+										<img width="220" height="150" src="{{ vich_uploader_asset(menu, 'imageFile') }}" alt="">
+										<div class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">New</div>
+									</div>
+									<div class="text-center p-4">
+										<p class="d-block h5 mb-2">{{ menu.nomPlat }}</p>
+										<span class="text-body ">{{ menu.cout }} dinars</span>
+									</div>
+									<div class="d-flex border-top">
+										<small class="w-50 text-center border-end py-2">
+											<a class="text-body" href="{{ path('menu_show', {'id': menu.id}) }}">
+												<i class="fa fa-eye text-primary me-2"></i>View detail</a>
+										</small>
+										<small class="w-50 text-center py-2">
+											<a class="text-body" href="">
+												<i class="fa fa-shopping-bag text-primary me-2"></i>Add to cart</a>
+										</small>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					</div> 
+				</div>
+			</div>
+
+
+<script>
+    document.getElementById('addToFavoritesBtn').addEventListener('click', function () {
+        // Vérifiez si l'utilisateur est connecté
+        if ({{ app.user ? 'true' : 'false' }}) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '{{ path('menu_add_to_favorites', {'id': menu.id}) }}', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        // La requête a réussi, masquez le bouton et affichez le message
+                        document.getElementById('addToFavoritesBtn').style.display = 'none';
+                        document.getElementById('addedToFavoritesMessage').style.display = 'block';
+                    } else {
+                        // La requête a échoué, vous pouvez gérer les erreurs ici si nécessaire
+                        console.error('Erreur lors de l\'ajout aux favoris');
+                    }
+                }
+            };
+            xhr.send();
+        } else {
+            // L'utilisateur n'est pas connecté, redirigez-le vers la page de connexion
+            document.getElementById('goLogin').style.display = 'block';
+            // window.location.href = '{{ path('app_login') }}';
+        }
+    });
+</script>
+{% endblock %}

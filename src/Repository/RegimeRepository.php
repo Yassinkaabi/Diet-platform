@@ -21,6 +21,24 @@ class RegimeRepository extends ServiceEntityRepository
         parent::__construct($registry, Regime::class);
     }
 
+
+    public function countRegime(): int
+    {
+        return $this->createQueryBuilder('o')
+            ->select('COUNT(o.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    public function findMenusByRegime(Regime $regime): array
+{
+    return $this->createQueryBuilder('r')
+        ->select('r.menus')
+        ->where('r.id = :regimeId')
+        ->setParameter('regimeId', $regime->getId())
+        ->getQuery()
+        ->getSingleResult();
+}
 //    /**
 //     * @return Regime[] Returns an array of Regime objects
 //     */

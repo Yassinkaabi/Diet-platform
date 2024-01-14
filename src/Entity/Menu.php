@@ -22,7 +22,7 @@ class Menu
 
     #[Vich\UploadableField(mapping: 'menu_images', fileNameProperty: 'imageName')]
     private ?File $imageFile = null;
-    
+
     #[ORM\Column(nullable: true)]
     private ?string $imageName = null;
 
@@ -38,6 +38,17 @@ class Menu
     #[ORM\ManyToOne(inversedBy: 'menus')]
     private ?Regime $regime = null;
 
+    #[ORM\Column]
+    private ?\DateTimeImmutable $createdAt = null;
+
+    #[ORM\ManyToOne(inversedBy: 'FavoriteMenu')]
+    private ?User $favoritedBy = null;
+
+    public function __construct()
+    {
+        $this->createdAt = new \DateTimeImmutable();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -48,14 +59,14 @@ class Menu
         return $this->nomPlat;
     }
 
-    public function setNomPlat(string $nomPlat): static
+    public function setNomPlat(string $nomPlat): static 
     {
         $this->nomPlat = $nomPlat;
 
         return $this;
     }
 
-        /**
+    /**
      * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
      * of 'UploadedFile' is injected into this setter to trigger the update. If this
      * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
@@ -134,6 +145,30 @@ class Menu
     public function setRegime(?Regime $regime): static
     {
         $this->regime = $regime;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeImmutable $createdAt): static
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getFavoritedBy(): ?User
+    {
+        return $this->favoritedBy;
+    }
+
+    public function setFavoritedBy(?User $favoritedBy): static
+    {
+        $this->favoritedBy = $favoritedBy;
 
         return $this;
     }

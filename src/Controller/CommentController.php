@@ -25,6 +25,18 @@ class CommentController extends AbstractController
             'comments' => $commentRepository->findAll(),
         ]);
     }
+    
+
+    #[Route('/admin/comment', name: 'app_comment_admin')]
+    public function getComment(CommentRepository $commentRepository): Response
+    {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            throw new AccessDeniedException('Access denied. You need to have the ADMIN role.');
+        }
+        return $this->render('admin/comment/index.html.twig', [
+            'comments' => $commentRepository->findAll(),
+        ]);
+    }
 
     #[Route('/{id}', name: 'app_comment_show')]
     public function show(Comment $comment): Response
@@ -32,7 +44,7 @@ class CommentController extends AbstractController
         if (!$this->isGranted('ROLE_ADMIN')) {
             throw new AccessDeniedException('Access denied. You need to have the ADMIN role.');
         }
-        return $this->render('comment/show.html.twig', [
+        return $this->render('admin/comment/show.html.twig', [
             'comment' => $comment,
         ]);
     }

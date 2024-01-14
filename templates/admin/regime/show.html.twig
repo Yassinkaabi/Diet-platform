@@ -1,0 +1,60 @@
+{% extends "dashboard.html.twig" %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <h2>Détails du Régime</h2>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th scope="row">ID</th>
+                <td>{{ regime.id }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Nom de Régime</th>
+                <td>{{ regime.nomRegime }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Durée de Régime</th>
+                <td>{{ regime.duree }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Type de Régime</th>
+                <td>{{ regime.type }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Food Items</th>
+                <td>
+                    {% if regime.menus|length > 0 %}
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Image</th>
+                                    <th scope="col">Nom du Plat</th>
+                                    <th scope="col">Cout</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for menu in regime.menus %}
+                                    <tr>
+                                        <td><img src="{{ vich_uploader_asset(menu, 'imageFile') }}" alt="image" style="max-width: 50px;" /></td>
+                                        <td><a href="{{ path('menu_show_admin', {'id': menu.id}) }}">{{ menu.nomPlat }}</a></td>
+                                        <td><span style="color: red;">{{ menu.cout }} Dinars</span></td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    {% else %}
+                        <p>Liste vide</p>
+                    {% endif %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('regime_edit', {'id': regime.id}) }}" class="btn btn-primary">Modifier</a>
+    <a href="{{ path('regime_delete', {'id': regime.id}) }}" class="btn btn-danger">Supprimer</a>
+</div>
+
+{% endblock %}

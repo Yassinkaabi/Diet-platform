@@ -1,0 +1,20 @@
+{% extends "base.html.twig" %}
+
+
+
+{% block body %}
+
+    <div class="item">
+    <div class="testimony-wrap d-flex">
+        <div class="user-img" style="background-image: url(images/person_1.jpg)"></div>
+        <div class="text pl-4">
+            <span class="quote d-flex align-items-center justify-content-center"><i class="fa fa-quote-left"></i></span>
+            <p class="mb-4">{{ comment.content }}</p>
+            <p class="name">{{ comment.user }}</p>
+            <span class="position">Customer</span>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

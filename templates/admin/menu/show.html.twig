@@ -1,0 +1,39 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block title %}Plat
+{% endblock %}
+
+{% block content %}
+
+	<div class="container mt-5">
+		<h2>Détails du plats</h2>
+
+		<dl class="row">
+			<dt class="col-sm-2">ID</dt>
+			<dd class="col-sm-10">{{ menu.id }}</dd>
+
+			<dt class="col-sm-2">Nom de Plat</dt>
+			<dd class="col-sm-10">{{ menu.nomPlat }}</dd>
+
+			<dt class="col-sm-2">Image</dt>
+			<dd class="col-sm-10"><img width="250" height="150" src="{{ vich_uploader_asset(menu, 'imageFile') }}" alt=""></dd>
+			
+            <dt class="col-sm-2">Cout</dt>
+			<dd class="col-sm-10">{{ menu.cout }}</dd>
+
+			<dt class="col-sm-2">Nombre de calories</dt>
+			<dd class="col-sm-10">{{ menu.nbrCalories }}</dd>
+
+			<dt class="col-sm-2">Ingredients</dt>
+			<dd class="col-sm-10">{{ menu.ingredients }}</dd>
+
+			<dt class="col-sm-2">Nom Régime</dt>
+			<dd class="col-sm-10">{{ menu.regime }}</dd>
+		</dl>
+		{% if is_granted('ROLE_ADMIN') %}
+			<a href="{{ path('menu_delete', {'id': menu.id}) }}" class="btn btn-danger">Supprimer</a>
+		{% endif %}
+		<a href="{{ path('app_admin_menu') }}" class="btn btn-secondary">Retour à la liste</a>
+	</div>
+
+{% endblock %}
